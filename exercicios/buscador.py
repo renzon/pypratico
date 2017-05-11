@@ -10,6 +10,18 @@ def buscar(*palavras_chave):
     ♣ BLACK CLUB SUIT
     ♥ BLACK HEART SUIT
     ♦ BLACK DIAMOND SUIT
+    >>> for caracter, nome in sorted(buscar('suit')):
+    ...     print(caracter, nome)
+    ...
+    ♠ BLACK SPADE SUIT
+    ♡ WHITE HEART SUIT
+    ♢ WHITE DIAMOND SUIT
+    ♣ BLACK CLUB SUIT
+    ♤ WHITE SPADE SUIT
+    ♥ BLACK HEART SUIT
+    ♦ BLACK DIAMOND SUIT
+    ♧ WHITE CLUB SUIT
+    🕴 MAN IN BUSINESS SUIT LEVITATING
     >>> dict(buscar('BlAcK', 'suit', 'ClUb'))
     {'♣': 'BLACK CLUB SUIT'}
     >>> for caracter, nome in sorted(buscar('chess', 'king')):
