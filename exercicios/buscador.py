@@ -53,4 +53,3 @@ def buscar(*palavras_chave):
                 yield (caracter, " ".join(unicode_name_upper))
         finally:
             limite += 1
-    return
