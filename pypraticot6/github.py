@@ -3,7 +3,7 @@ import requests
 
 def avatar(usuario):
     """Retorna o link com avatar do usuário
-    
+
     :param usuario: str com nome do usuario
     :return: str
     """
