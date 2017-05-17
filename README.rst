@@ -1,2 +1,4 @@
-# pypratico
+PyPratico
+---------
+
 Repositório do curso PyPratico
