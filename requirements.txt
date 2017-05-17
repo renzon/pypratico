@@ -1,2 +1,1 @@
--e git+https://github.com/kennethreitz/requests.git#egg=requests
-
+requests==2.13.0
