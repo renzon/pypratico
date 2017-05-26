@@ -35,7 +35,7 @@ def buscar(*palavras_chave):
     ♚ BLACK CHESS KING
 
     :param palavras_chave: tupla de strings
-    :return: generator onde cada elemento é uma tupla. O primeiro elemento da 
+    :return: generator onde cada elemento é uma tupla. O primeiro elemento da
     tupla é o caracter e o segundo é seu nome. Assim ele pode ser utilizado no
     construtor de um dicionário
     """
