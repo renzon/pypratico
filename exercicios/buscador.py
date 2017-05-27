@@ -49,7 +49,10 @@ def buscar(*palavras_chave):
         except ValueError:
             pass
         else:
-            if all(palavra in unicode_name_upper for palavra in palavras_upper):
+            if all(
+                    palavra in unicode_name_upper
+                    for palavra in palavras_upper
+            ):
                 yield (caracter, " ".join(unicode_name_upper))
         finally:
             limite += 1
