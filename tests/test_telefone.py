@@ -1,6 +1,6 @@
 import pytest
 
-from pypraticot6.telefone import Telefone
+from pypraticot6.telefone import Telefone, RediscarExcecao
 
 NUMEROS_VALIDOS = ['8765432', 2345678]
 
@@ -31,3 +31,14 @@ def test_rediscar_dois_telefone_diferentes(numero):
     outro_telefone.ligar(outro_numero)
     assert 'ligar para ' + str(numero) == telefone.rediscar()
     assert 'ligar para ' + str(outro_numero) == outro_telefone.rediscar()
+
+
+def test_rediscacar_excecao():
+    """Certifica que tentar rediscar ante de fazer uma ligacao lança exceção"""
+    telefone = Telefone()
+    try:
+        telefone.rediscar()
+    except RediscarExcecao:
+        pass  # Deu certo
+    else:
+        pytest.fail('Rediscar deveria ter lançado exceção')
