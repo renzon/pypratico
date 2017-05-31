@@ -26,6 +26,8 @@ def test_rediscar(numero):
 def test_rediscar_dois_telefone_diferentes(numero):
     telefone = Telefone()
     telefone.ligar(numero)
-    telefone_2 = Telefone()
+    outro_telefone = Telefone()
     outro_numero = str(numero) + '1'
-    assert 'ligar para ' + str(outro_numero) == telefone_2.rediscar()
+    outro_telefone.ligar(outro_numero)
+    assert 'ligar para ' + str(numero) == telefone.rediscar()
+    assert 'ligar para ' + str(outro_numero) == outro_telefone.rediscar()

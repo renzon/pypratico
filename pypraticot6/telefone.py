@@ -1,11 +1,10 @@
-ultimo_numero = None
-
-
 class Telefone:
+    def __init__(self):
+        self.ultimo_numero = None
+
     def ligar(self, numero):
-        global ultimo_numero
-        ultimo_numero = numero
+        self.ultimo_numero = numero
         return f'ligar para {numero}'
 
     def rediscar(self):
-        return self.ligar(ultimo_numero)
+        return self.ligar(self.ultimo_numero)
