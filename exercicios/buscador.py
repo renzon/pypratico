@@ -1,3 +1,8 @@
+import sys
+
+import unicodedata
+
+
 def buscar(*palavras_chave):
     """ Busca por caracteres que contenham a palavra chave em seu nome.
     Ex:
@@ -35,3 +40,15 @@ def buscar(*palavras_chave):
     tupla é o caracter e o segundo é seu nome. Assim ele pode ser utilizado no
     construtor de um dicionário
     """
+
+    palavras_chave = set(map(str.upper, palavras_chave))
+
+    for char in map(chr, range(sys.maxunicode)):
+        try:
+            nomes = unicodedata.name(char)
+        except ValueError:
+            pass
+        else:
+            nomes_set = set(nomes.split())
+            if palavras_chave.issubset(nomes_set):
+                yield char, nomes
