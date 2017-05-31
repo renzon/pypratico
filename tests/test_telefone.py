@@ -1,3 +1,5 @@
+import pytest
+
 from pypraticot6.telefone import Telefone
 
 
@@ -5,11 +7,10 @@ def test_telefone_init():
     assert (Telefone() is not None)
 
 
-def test_ligar_com_string():
-    telefone = Telefone()
-    assert 'ligar para 2345678' == telefone.ligar('2345678')
+numeros_validos = ['8765432', 2345678]
 
 
-def test_ligar_com_int():
+@pytest.mark.parametrize('numero', numeros_validos)
+def test_ligar(numero):
     telefone = Telefone()
-    assert 'ligar para 2345678' == telefone.ligar(2345678)
+    assert 'ligar para ' + str(numero) == telefone.ligar(numero)
