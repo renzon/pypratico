@@ -33,6 +33,8 @@ def test_rediscar_dois_telefone_diferentes(numero):
     assert 'ligar para ' + str(outro_numero) == outro_telefone.rediscar()
 
 
+
+
 def test_rediscacar_excecao():
     """Certifica que tentar rediscar ante de fazer uma ligacao lança exceção"""
     telefone = Telefone()
