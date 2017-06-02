@@ -1,3 +1,5 @@
+from unittest.mock import Mock
+
 import pytest
 
 from pypraticot6 import tel
@@ -6,15 +8,6 @@ from pypraticot6 import tel
 def test_telefonista_init():
     """Telefonista possui inicializador vazio"""
     assert tel.Telefonista()
-
-
-class TelefoneMock:
-    def __init__(self):
-        self.numeros = []
-
-    def ligar(self, numero):
-        self.numeros.append(numero)
-        return f'ligar de mentira para {numero}'
 
 
 @pytest.fixture(scope='module')
@@ -28,15 +21,16 @@ def telefonista():
 @pytest.fixture
 def telefonista_fake(telefonista):
     # setup
-    telefone_orinal=telefonista.telefone
-    telefonista.telefone = TelefoneMock()
+    telefone_orinal = telefonista.telefone
+    telefone_mock = Mock()
+    telefone_mock.ligar.side_effect = (lambda numero:
+                                       f'ligar de mentira para {numero}')
+    telefonista.telefone = telefone_mock
+
     yield telefonista
 
-    #tear down
-    telefonista.telefone=telefone_orinal
-
-
-
+    # tear down
+    telefonista.telefone = telefone_orinal
 
 
 def teste_adicionar_usuario(telefonista):
@@ -52,7 +46,8 @@ def test_spam_unitario(telefonista_fake):
         'Telefonista cadastro de Tiago ligar de mentira para 8765432',
     ]
     assert ligacoes_esperadas == ligacoes_para_usuarios
-    assert ['2345678', '8765432'] == telefonista_fake.telefone.numeros
+    telefonista_fake.telefone.ligar.assert_any_call('2345678')
+    telefonista_fake.telefone.ligar.assert_any_call('8765432')
 
 
 # Test de integração
